@@ -1,16 +1,20 @@
 #include "main.h"
 
 /**
- * _printf - a function that select the correct function to print a format string
+ * _printf - a function that select the correct
+ * function to print a format string
  * @format: string contains the desired characters to be printed
  * Return: number of characters printed(excluding the null byte)
  */
 
-int _printf(const char * format, ...)
+int _printf(const char *format, ...)
 {
 	convert_receiv a_list[] = {
-		{"c", print_charact}, {"s", print_str}, {"%", print_percent}, 
-		{"d", print_int_base10}, {"i", print_int},
+		{"c", print_charact},
+		{"s", print_str},
+		{"%", print_percent},
+		{"d", print_int_base10},
+		{"i", print_int},
 		{"b", print_bin},
 		{"u", print_unsigned_int},
 		{"o", print_oct},

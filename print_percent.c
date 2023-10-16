@@ -8,12 +8,12 @@
 
 int print_percent(__attribute__((unused))va_list list)
 {
-	if(_putchar('%'))
+	if (_putchar('%'))
 	{
 		return (1);
 	}
-	else if(_putchar('%') == -1)
+	else if (_putchar('%') == -1)
 	{
-		return(-1);
+		return (-1);
 	}
 }

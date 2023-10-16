@@ -12,10 +12,9 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-
 /**
  * _puts - prints a string to standard output.
- * @str: pointer to the string to print 
+ * @str: pointer to the string to print
  * Return: number of characters printed
  */
 
@@ -24,6 +23,7 @@ int _puts(char *str)
 	register short i;
 
 	int i = 0;
+
 	while (str[i])
 	{
 		_putchar(str[i]);
