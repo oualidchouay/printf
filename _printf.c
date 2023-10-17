@@ -9,29 +9,43 @@
 
 int _printf(const char *format, ...)
 {
-	convert_receiv a_list[] = {
-		{"c", print_charact},
-		{"s", print_str},
-		{"%", print_percent},
-		{"d", print_int_base10},
-		{"i", print_int},
-		{"b", print_bin},
-		{"u", print_unsigned_int},
-		{"o", print_oct},
-		{"x", print_hex},
-		{"X", print_HEX},
-		{"S", print_String},
-		{"p", print_point},
-		{"r", print_rev},
-		{"R", print_rot13},
-		{NULL, NULL},
-	};
 	va_list args;
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0')
-		return (-1);
-
 	va_start(args, format);
-	ch_printed = format_receiv(format, a_list, args);
+
+	int count = 0;
+
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+
+			if (*format == 'c')
+			{
+				int ch = va_arg(args, int);
+
+				count += putchar(ch);
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(args, char *);
+
+			while (*str)
+			{
+				count += putchar(*str);
+				str++;
+			}
+			}
+			else if (*format == '%')
+				count += putchar('%');
+		}
+		else
+		{
+			count += putchar(*format);
+		}
+		format++;
+	}
 	va_end(args);
-	return (ch_printed);
+	return (count);
+}
