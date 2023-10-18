@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * print_37 - prints % sign
+ * print_% - prints percentage  sign
  * Return: integer
 */
 
-int print_37(void)
+int print_%(void)
 {
 	_putchar('%');
 	return (1);
