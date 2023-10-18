@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * printf_unsigned - prints unsigned integer
+ * print_unsigned_int - prints unsigned integer
  * @args_list: argument to print
  * Return: number of characters printed
 */
-int print_unsigned(va_list args_list)
+int print_unsigned_int(va_list args_list)
 {
 	unsigned int n = va_arg(args_list, unsigned int);
 

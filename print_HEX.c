@@ -12,7 +12,7 @@ int print_HEX(va_list arg_list)
 	char hex_digits_upper[] = "0123456789ABCDEF";
 	char buff[10];
 	int i = 0;
-	
+
 	if (num == 0)
 	{
 		putchar('0');
@@ -26,11 +26,11 @@ int print_HEX(va_list arg_list)
 
 	for (i--; i >= 0; i--)
 	{
-	if (arr[i] >= 'a' && arr[i] <= 'f');
-		arr[i] -= 32;
+		if (buff[i] >= 'a' && buff[i] <= 'f')
+			buff[i] -= 32;
 	}
 
-	_putchar(arr[i]);
+	_putchar(buff[i]);
 
 	return (i + 1);
 }

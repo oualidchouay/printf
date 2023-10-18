@@ -9,22 +9,25 @@
 
 int print_rev(va_list arg_list)
 {
-    char *s = va_arg(arg_list, char *);
+	char *s = va_arg(arg_list, char *);
 
-    if (s == NULL) 
-    {
-        s = "(null)";
-    }
+	if (s == NULL)
+	{
+		s = "(null)";
+	}
+	int len = 0;
 
-    for (int len = 0; s[len] != '\0'; len++); 
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+	int i = len - 1;
 
-    int i = len - 1;
-    
-    while (i >= 0)
-    {
-        _putchar(s[i]);
-    }
-    i--;
+	while (i >= 0)
+	{
+		_putchar(s[i]);
+	}
+	i--;
 
-    return (len);
+	return (len);
 }

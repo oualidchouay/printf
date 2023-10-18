@@ -12,8 +12,8 @@ int print_hex(va_list arg_list)
 	char hex_digits_lower[] = "0123456789abcdef";
 	char buff[10];
 	int i = 0;
-	
-	if ( num == 0)
+
+	if (num == 0)
 	{
 		putchar('0');
 		return (1);

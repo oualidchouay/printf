@@ -21,7 +21,7 @@ typedef struct format
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_%(void);
+int print_percent(void);
 
 /* Character conversion specifiers */
 int printf_ch(va_list arg_list);
@@ -34,16 +34,14 @@ int print_excl_string(char *string);
 int print_int(va_list arg_list);
 int print_dec(va_list arg_list);
 int print_bin(va_list arg_list);
-int print_unsigned(va_list args_list);
+int print_unsigned_int(va_list args_list);
 int print_oct(va_list arg_list);
 int print_hex(va_list arg_list);
 int print_HEX(va_list arg_list);
-int print_hex_extra(unsigned long int num);
-int print_HEX_extra(unsigned int num);
 
 /* Miscellaneous conversion specifiers */
 int print_pointer(va_list arg_list);
 int print_rev(va_list arg_list);
-int print_rot13(va_list arg_list);
+int print_r13(va_list arg_list);
 
 #endif

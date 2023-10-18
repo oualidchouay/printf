@@ -7,7 +7,8 @@
  */
 int printf_ch(va_list arg_list)
 {
-    char ch = va_arg(arg_list, int);
-    _putchar(ch);
-    return (1);
+	char ch = va_arg(arg_list, int);
+
+	_putchar(ch);
+	return (1);
 }

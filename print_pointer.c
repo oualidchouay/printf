@@ -8,12 +8,12 @@
  */
 int print_pointer(va_list arg_list)
 {
-    void *point = va_arg(arg_list, void *);
+	void *point = va_arg(arg_list, void *);
 
-    if (point == NULL) 
-    {
-        return printf("(nil)");
-    }
+	if (point == NULL)
+	{
+		return (printf("(nil)"));
+	}
 
-    return printf("0x%lx", (unsigned long)point);
+	return (printf("%p", point));
 }
