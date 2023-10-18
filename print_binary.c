@@ -16,11 +16,10 @@ int print_bin(va_list arg_list)
 		_putchar('0');
 		return (1);
 	}
-	
+
 	unsigned int m;
 
 	m = 1 << (sizeof(unsigned int) * CHAR_BIT - 1);
-	
 	int flag = 0;
 
 	while (m > 0)
