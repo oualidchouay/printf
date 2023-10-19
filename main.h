@@ -21,13 +21,13 @@ typedef struct format
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_percent(void);
+int print_percent(va_list arg_list);
 
 /* Character conversion specifiers */
-int printf_ch(va_list arg_list);
+int print_ch(va_list arg_list);
 
 /* String conversion specifiers */
-int printf_string(va_list arg_list);
+int print_string(va_list arg_list);
 int print_excl_string(char *string);
 
 /* Num conversion specifiers */
@@ -35,7 +35,7 @@ int print_int(va_list arg_list);
 int print_dec(va_list arg_list);
 int print_bin(va_list arg_list);
 int print_unsigned_int(va_list args_list);
-int print_oct(va_list arg_list);
+int print_oc(va_list arg_list);
 int print_hex(va_list arg_list);
 int print_HEX(va_list arg_list);
 

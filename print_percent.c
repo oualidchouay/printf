@@ -5,7 +5,7 @@
  * Return: integer
 */
 
-int print_percent(void)
+int print_percent(va_list arg_list)
 {
 	_putchar('%');
 	return (1);

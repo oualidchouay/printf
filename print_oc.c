@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_oct - converts to octal
+ * print_oc - converts to octal
  * @arg_list: argument
  * Return: number of characters printed
 */
 
-int print_oct(va_list arg_list)
+int print_oc(va_list arg_list)
 {
 	unsigned int num = va_arg(arg_list, unsigned int);
 	char arr[10];
