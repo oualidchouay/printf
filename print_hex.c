@@ -2,16 +2,17 @@
 
 /**
  * print_hex - converts to hexadecimal
- * @arg_list: argument to print
+ * @args: argument to print
  * Return: number of characters printed
 */
 
-int print_hex(va_list arg_list)
+int print_hex(va_list args)
 {
-	unsigned int num = va_arg(arg_list, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 	char hex_digits_lower[] = "0123456789abcdef";
 	char buff[10];
 	int i = 0;
+	int count = 0;
 
 	if (num == 0)
 	{
@@ -27,7 +28,8 @@ int print_hex(va_list arg_list)
 	for (i--; i >= 0; i--)
 	{
 		_putchar(buff[i]);
+		count++;
 	}
 
-	return (i + 1);
+	return (count);
 }

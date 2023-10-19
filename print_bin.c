@@ -2,13 +2,13 @@
 
 /**
  * print_bin - converts to binary
- * @arg_list: argument
+ * @args: argument
  * Return: integer
  */
 
-int print_bin(va_list arg_list)
+int print_bin(va_list args)
 {
-	unsigned int n = va_arg(arg_list, unsigned int);
+	unsigned int n = va_arg(args, unsigned int);
 	int count = 0;
 	int flag = 0;
 	unsigned int m;

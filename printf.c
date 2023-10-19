@@ -7,12 +7,12 @@
  */
 int _printf(const char *format, ...)
 {
-    match m[] = {
-	    {"%%", print_percent}, {"%c", printf_ch}, {"%s", printf_string},
-	    {"%S", print_excl_string}, {"%d", print_dec}, {"%i", print_int},
-	    {"%u", print_unsigned_int}, {"%o", print_oct}, {"%x", print_hex},
-	    {"%X", print_HEX}, {"%p", print_pointer}, {"%b", print_bin},
-	    {"%r", print_rev}, {"%R", print_r13},
+	convert_structure m[] = {
+		{"%%", print_percent}, {"%c", printf_ch}, {"%s", printf_string},
+		{"%S", print_excl_string}, {"%d", print_dec}, {"%i", print_int},
+		{"%u", print_unsigned_int}, {"%o", print_oct}, {"%x", print_hex},
+		{"%X", print_HEX}, {"%p", print_pointer}, {"%b", print_bin},
+		{"%r", print_rev}, {"%R", print_r13},
 	};
 	va_list args;
 	int i = 0, len = 0;
@@ -23,30 +23,21 @@ int _printf(const char *format, ...)
 		return (0);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i++] == '%')
 		{
 			j = 0;
-			while (j < 13)
+			while (j < 13 && format[i] != *(m[j].a))
 			{
-				if (format[i + 1] == *(m[j].a))
-				{
-					len += m[j].f(args);
-					i += 2;
-					break;
-				}
 				j++;
 			}
-			if (j == 13)
-			{
-				_putchar('%');
-			}
+			len += (j != 13) ? m[j].f(args) : _putchar('%');
+			i++;
 		}
 		else
 		{
-			_putchar(format[i]);
+			_putchar(format[i - 1]);
 		}
-		i++;
-	}
+	}			
 	va_end(args);
 	return (len);
 }

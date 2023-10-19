@@ -7,41 +7,30 @@
 #include <unistd.h>
 #include <limits.h>
 
-/**
- * struct format - matches the conversion specifiers for printf.
- * @a: character pointer representing the
- * specifier (l, h) for (d, i, u, o, x, X).
- * @f: function pointer for the conversion specifier.
- */
-typedef struct format
-{
-	char *a;
-	int (*f)();
-} match;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_percent(va_list arg_list);
+int print_percent(va_list args);
 
 /* Character conversion specifiers */
-int print_ch(va_list arg_list);
+int printf_ch(va_list args);
 
 /* String conversion specifiers */
-int print_string(va_list arg_list);
-int print_excl_string(char *string);
+int printf_string(va_list args);
+int print_excl_string(va_list args);
 
 /* Num conversion specifiers */
-int print_int(va_list arg_list);
-int print_dec(va_list arg_list);
-int print_bin(va_list arg_list);
-int print_unsigned_int(va_list args_list);
-int print_oc(va_list arg_list);
-int print_hex(va_list arg_list);
-int print_HEX(va_list arg_list);
+int print_int(va_list args);
+int print_dec(va_list args);
+int print_bin(va_list args);
+int print_unsigned_int(va_list args);
+int print_oct(va_list args);
+int print_hex(va_list args);
+int print_HEX(va_list args);
 
 /* Miscellaneous conversion specifiers */
-int print_pointer(va_list arg_list);
-int print_rev(va_list arg_list);
-int print_r13(va_list arg_list);
+int print_pointer(va_list args);
+int print_rev(va_list args);
+int print_r13(va_list args);
 
 #endif

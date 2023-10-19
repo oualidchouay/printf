@@ -2,13 +2,13 @@
 
 /**
  * print_pointer - Prints a pointer to the console.
- * @arg_list: The argument list containing the pointer to print.
+ * @args: The argument list containing the pointer to print.
  *
  * Return: The number of characters printed.
  */
-int print_pointer(va_list arg_list)
+int print_pointer(va_list args)
 {
-	void *point = va_arg(arg_list, void *);
+	void *point = va_arg(args, void *);
 
 	if (point == NULL)
 	{

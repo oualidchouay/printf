@@ -2,14 +2,15 @@
 
 /**
  * print_int - prints integer
- * @args_list: argument to print
+ * @args: argument to print
  * Return: number of characters printed
 */
-int print_int(va_list args_list)
+int print_int(va_list args)
 {
-	int n = va_arg(args_list, int);
+	int n = va_arg(args, int);
 	char buffer[10];
 	int i = 0;
+	int count = 0;
 
 	if (n < 0)
 	{
@@ -23,12 +24,12 @@ int print_int(va_list args_list)
 		n /= 10;
 	}
 
-	for (i--; i >= 0; i--)
+	while (i > 0)
 	{
-		_putchar(buffer[i]);
+		_putchar(buffer[--i]);
+		count++;
 	}
-
-	return (i + 1);
+	return (count);
 }
 
 /**
@@ -36,7 +37,7 @@ int print_int(va_list args_list)
  * @args_list: argument to print
  * Return: number of characters printed
 */
-int print_dec(va_list args_list)
+int print_dec(va_list args)
 {
-	return (print_int(args_list));
+	return (print_int(args));
 }

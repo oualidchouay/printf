@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
- * print_string - Prints a string
- * @arg_list: Argument list
+ * printf_string - Prints a string
+ * @args: Argument
  * Return: Number of characters printed
  */
-int print_string(va_list arg_list)
+int printf_string(va_list args __attribute__((unused)))
 {
 	char *str;
 	int len = 0;
 
-	str = va_arg(arg_list, char *);
+	str = va_arg(args, char *);
 	if (str == NULL)
 		str = "(null)";
 

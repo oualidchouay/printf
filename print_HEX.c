@@ -2,16 +2,17 @@
 
 /**
  * print_HEX - converts to HEXADECIMAL
- * @arg_list: argument to print
+ * @args: argument to print
  * Return: num of characters printed
 */
 
-int print_HEX(va_list arg_list)
+int print_HEX(va_list args)
 {
-	unsigned int num = va_arg(arg_list, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 	char hex_digits_upper[] = "0123456789ABCDEF";
 	char buff[10];
 	int i = 0;
+	int count = 0;
 
 	if (num == 0)
 	{
@@ -26,11 +27,8 @@ int print_HEX(va_list arg_list)
 
 	for (i--; i >= 0; i--)
 	{
-		if (buff[i] >= 'a' && buff[i] <= 'f')
-			buff[i] -= 32;
+		_putchar(buff[i]);
+		count++;
 	}
-
-	_putchar(buff[i]);
-
-	return (i + 1);
+	return (count);
 }

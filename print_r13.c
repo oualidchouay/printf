@@ -2,15 +2,15 @@
 
 /**
  * print_r13 - converts a string to ROT13
- * @arg_list: the argument list containing the string to convert
+ * @args: the argument list containing the string to convert
  *
  * Return: counter
  */
-int print_r13(va_list arg_list)
+int print_r13(va_list args)
 {
 	int i = 0;
 	int count = 0;
-	char *s = va_arg(arg_list, char *);
+	char *s = va_arg(args, char *);
 
 	if (s == NULL)
 	{
@@ -19,7 +19,7 @@ int print_r13(va_list arg_list)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-	char c = s[i];
+		char c = s[i];
 
 	if (c >= 'a' && c <= 'z')
 	{

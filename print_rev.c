@@ -2,16 +2,16 @@
 
 /**
  * print_rev - prints a string in reverse order
- * @arg_list: the argument list containing the string to print
+ * @args: the argument list containing the string to print
  *
  * Return: the number of characters printed
  */
 
-int print_rev(va_list arg_list)
+int print_rev(va_list args)
 {
+	int i;
 	int len = 0;
-	int i = len - 1;
-	char *s = va_arg(arg_list, char *);
+	char *s = va_arg(args, char *);
 
 	if (s == NULL)
 	{
@@ -23,11 +23,10 @@ int print_rev(va_list arg_list)
 		len++;
 	}
 
-	while (i >= 0)
+	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(s[i]);
 	}
-	i--;
 
 	return (len);
 }

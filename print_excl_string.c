@@ -2,13 +2,14 @@
 
 /**
  * print_excl_string - prints exclusive string
- * @string: the string to print
+ * @args: the string to print
  * Return: len
 */
 
-int print_excl_string(char *string)
+int print_excl_string(va_list args)
 {
 	int i, len = 0;
+	char *string = va_arg(args, char *);
 
 	if (string == NULL)
 	{
@@ -20,11 +21,12 @@ int print_excl_string(char *string)
 	{
 		if (string[i] < 32 || string[i] >= 27)
 		{
-			len += printf("\\x%02x", (unsigned char)string[i]);
+			len += _printf("\\x%02x", (unsigned char)string[i]);
 		}
 		else
 		{
-			len = len + putchar(string[i]);
+			_putchar(string[i]);
+			len++;
 		}
 		i++;
 	}
