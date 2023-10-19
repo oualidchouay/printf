@@ -7,13 +7,14 @@
 */
 int print_unsigned_int(va_list args_list)
 {
+	int i = 0;
 	unsigned int n = va_arg(args_list, unsigned int);
 
-	for (int i = 0; n > 0; i++)
+	while (n > 0)
 	{
 		_putchar('0' + (n % 10));
 		n = n / 10;
 	}
-
+	i++;
 	return (i);
 }

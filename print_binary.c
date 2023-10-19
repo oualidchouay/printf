@@ -10,6 +10,8 @@ int print_bin(va_list arg_list)
 {
 	unsigned int n = va_arg(arg_list, unsigned int);
 	int count = 0;
+	int flag = 0;
+	unsigned int m;
 
 	if (n == 0)
 	{
@@ -17,15 +19,12 @@ int print_bin(va_list arg_list)
 		return (1);
 	}
 
-	unsigned int m;
-
 	m = 1 << (sizeof(unsigned int) * CHAR_BIT - 1);
-	int flag = 0;
 
 	while (m > 0)
 	{
 		if ((n & m) != 0)
-		flag = 1;
+			flag = 1;
 
 		if (flag)
 		{

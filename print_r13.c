@@ -8,6 +8,8 @@
  */
 int print_r13(va_list arg_list)
 {
+	int i = 0;
+	int count = 0;
 	char *s = va_arg(arg_list, char *);
 
 	if (s == NULL)
@@ -15,9 +17,7 @@ int print_r13(va_list arg_list)
 		s = "(null)";
 	}
 
-	int counter = 0;
-
-	for (int i = 0; s[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 	char c = s[i];
 
@@ -31,8 +31,8 @@ int print_r13(va_list arg_list)
 	}
 
 	_putchar(c);
-	counter++;
+	count++;
 	}
 
-	return (counter);
+	return (count);
 }

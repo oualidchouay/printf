@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * printf_int - prints integer
+ * print_int - prints integer
  * @args_list: argument to print
  * Return: number of characters printed
 */
-int printf_int(va_list args_list)
+int print_int(va_list args_list)
 {
 	int n = va_arg(args_list, int);
 	char buffer[10];
@@ -32,11 +32,11 @@ int printf_int(va_list args_list)
 }
 
 /**
- * printf_dec - prints decimal
+ * print_dec - prints decimal
  * @args_list: argument to print
  * Return: number of characters printed
 */
-int printf_dec(va_list args_list)
+int print_dec(va_list args_list)
 {
-	return (printf_int(args_list));
+	return (print_int(args_list));
 }

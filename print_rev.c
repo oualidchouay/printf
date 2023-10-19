@@ -9,19 +9,19 @@
 
 int print_rev(va_list arg_list)
 {
+	int len = 0;
+	int i = len - 1;
 	char *s = va_arg(arg_list, char *);
 
 	if (s == NULL)
 	{
 		s = "(null)";
 	}
-	int len = 0;
 
 	while (s[len] != '\0')
 	{
 		len++;
 	}
-	int i = len - 1;
 
 	while (i >= 0)
 	{
