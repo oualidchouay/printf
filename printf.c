@@ -27,13 +27,15 @@ int _printf(const char *format, ...)
 		{
 			while (j < 14 && format[i] && format[i] != *(m[j].a))
 				j++;
-				if (j == 14 && (++len))
-				{
-					_putchar('%');
-					_putchar(format[i - 1]);
-				}
-			else
+			if (j != 14)
+			{
 				len += m[j].f(args);
+			}
+			else if (format[i])
+			{
+				_putchar('%');
+				_putchar(format[i]);
+			}
 		}
 		else
 			_putchar(format[i - 1]);
