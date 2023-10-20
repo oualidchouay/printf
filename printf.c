@@ -1,45 +1,68 @@
 #include "main.h"
+#include <stdarg.h>
+
+    print_specifier_t print_specifiers[] = {
+        {'c', printf_ch},
+        {'s', printf_string},
+        {'%', print_percent},
+        {'i', print_int},
+        {'d', print_dec},
+        {'b', print_bin},
+        {'u', print_unsigned_int},
+        {'o', print_oct},
+        {'x', print_hex},
+        {'X', print_HEX},
+        {'p', print_pointer},
+        {'R', print_r13},
+        {'r', print_rev},
+        {0, NULL}
+    };
 
 /**
  * _printf - Mimics the printf function
  * @format: Format specifier string
  * Return: Number of characters printed
  */
-
-	specifier_t specifiers[] = {
-				{'%', print_percent}, {'c', printf_ch}, {'s', printf_string},
-		{'S', print_excl_string}, {'d', print_dec}, {'i', print_int},
-		{'u', print_unsigned_int}, {'o', print_oct}, {'x', print_hex},
-		{'X', print_HEX}, {'p', print_pointer}, {'b', print_bin},
-		{'r', print_rev}, {'R', print_r13},
-    {0, NULL}
-};
-
-
-int _printf(const char *format, ...) {
+int _printf(const char *format, ...)
+{
     va_list args;
-    int i = 0, j, count = 0;
+    int printed_chars = 0;
+    int j = 0;
+    const char *specifiers = "cs%idbuoxXpRr";
 
     va_start(args, format);
 
-    while (format && format[i]) {
-        if (format[i] == '%') {
-            i++;
-            j = 0;
-            while (specifiers[j].c != 0) {
-                if (specifiers[j].c == format[i]) {
-                    count += specifiers[j].f(args);
-                    break;
-                }
-                j++;
-            }
-        } else {
-            write(1, &format[i], 1);
-            count++;
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            _putchar(*format++);
+            printed_chars++;
+            continue;
         }
-        i++;
+
+        format++;
+
+        if (*format == '%')
+        {
+            _putchar('%');
+            printed_chars++;
+            format++;
+            continue;
+        }
+
+        while (specifiers[j] != '\0')
+        {
+            if (*format == specifiers[j])
+            {
+                printed_chars += print_specifiers[j].printer(args);
+                format++;
+                break;
+            }
+            j++;
+        }
     }
 
     va_end(args);
-    return count;
+    return printed_chars;
 }

@@ -8,14 +8,15 @@
 #include <limits.h>
 
 /**
- * struct converter_func - struct for handling format specifiers
+ * struct print_specifier - struct for handling format specifiers
  * @specifier: The format specifier character
- * @func: The function to handle the specifier
+ * @printer: The function to handle the specifier
  */
-typedef struct specifier {
-    char c;
-    int (*f)(va_list);
-} specifier_t;
+typedef struct print_specifier
+{
+    char specifier;
+    int (*printer)(va_list);
+} print_specifier_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
