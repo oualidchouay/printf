@@ -2,7 +2,7 @@
 
 /**
  * print_excl_string - prints exclusive string
- * @args: the string to print
+ * @args: argument
  * Return: len
 */
 
