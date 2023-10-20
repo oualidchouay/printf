@@ -5,39 +5,41 @@
  * @format: Format specifier string
  * Return: Number of characters printed
  */
-int _printf(const char *format, ...)
-{
-	convert_structure m[] = {
-		{"%%", print_percent}, {"%c", printf_ch}, {"%s", printf_string},
-		{"%S", print_excl_string}, {"%d", print_dec}, {"%i", print_int},
-		{"%u", print_unsigned_int}, {"%o", print_oct}, {"%x", print_hex},
-		{"%X", print_HEX}, {"%p", print_pointer}, {"%b", print_bin},
-		{"%r", print_rev}, {"%R", print_r13},
-	};
-	va_list args;
-	int i = 0, len = 0;
-	int j;
 
-	va_start(args, format);
-	if (!format || (format[0] == '%' && format[1] == '\0'))
-		return (0);
-	while (format[i])
-	{
-		if (format[i++] == '%')
-		{
-			j = 0;
-			while (j < 13 && format[i] != *(m[j].a))
-			{
-				j++;
-			}
-			len += (j != 13) ? m[j].f(args) : _putchar('%');
-			i++;
-		}
-		else
-		{
-			_putchar(format[i - 1]);
-		}
-	}			
-	va_end(args);
-	return (len);
+	specifier_t specifiers[] = {
+				{'%', print_percent}, {'c', printf_ch}, {'s', printf_string},
+		{'S', print_excl_string}, {'d', print_dec}, {'i', print_int},
+		{'u', print_unsigned_int}, {'o', print_oct}, {'x', print_hex},
+		{'X', print_HEX}, {'p', print_pointer}, {'b', print_bin},
+		{'r', print_rev}, {'R', print_r13},
+    {0, NULL}
+};
+
+
+int _printf(const char *format, ...) {
+    va_list args;
+    int i = 0, j, count = 0;
+
+    va_start(args, format);
+
+    while (format && format[i]) {
+        if (format[i] == '%') {
+            i++;
+            j = 0;
+            while (specifiers[j].c != 0) {
+                if (specifiers[j].c == format[i]) {
+                    count += specifiers[j].f(args);
+                    break;
+                }
+                j++;
+            }
+        } else {
+            write(1, &format[i], 1);
+            count++;
+        }
+        i++;
+    }
+
+    va_end(args);
+    return count;
 }

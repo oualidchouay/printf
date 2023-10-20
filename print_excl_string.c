@@ -19,7 +19,7 @@ int print_excl_string(va_list args)
 
 	while (string[i] != '\0')
 	{
-		if (string[i] < 32 || string[i] >= 27)
+		if (string[i] < 32 || string[i] >= 127)
 		{
 			len += _printf("\\x%02x", (unsigned char)string[i]);
 		}

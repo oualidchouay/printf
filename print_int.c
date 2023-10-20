@@ -14,19 +14,24 @@ int print_int(va_list args)
 
 	if (n < 0)
 	{
+		n *= -1;
 		_putchar('-');
-		n = -n;
+		count++;
 	}
-
+	if ( n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	while (n > 0)
 	{
 		buffer[i++] = n % 10 + '0';
 		n /= 10;
 	}
 
-	while (i > 0)
+	for (i--; i >= 0; i--)
 	{
-		_putchar(buffer[--i]);
+		_putchar(buffer[i]);
 		count++;
 	}
 	return (count);

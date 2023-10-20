@@ -7,6 +7,15 @@
 #include <unistd.h>
 #include <limits.h>
 
+/**
+ * struct converter_func - struct for handling format specifiers
+ * @specifier: The format specifier character
+ * @func: The function to handle the specifier
+ */
+typedef struct specifier {
+    char c;
+    int (*f)(va_list);
+} specifier_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
