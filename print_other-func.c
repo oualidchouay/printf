@@ -20,7 +20,7 @@ int print_percent(va_list args)
  * Return: integer
  */
 
-int print_binary(va_list args)
+int print_bin(va_list args)
 {
 	int count = 0;
 	unsigned int n = va_arg(args, unsigned int);
@@ -31,7 +31,7 @@ int print_binary(va_list args)
 	if (n == 0)
 	{
 		putchar('0');
-		return 1;
+		return (1);
 	}
 
 	while (n)
