@@ -116,9 +116,9 @@ int print_pointer(va_list args)
 	if (point == NULL)
 	{
 		_printf("(nil)");
-		return(5);
+		return (5);
 	}
 
 	_printf("%p", point);
-	return(0);
+	return (0);
 }
