@@ -101,6 +101,8 @@ int print_oct(va_list args)
 	return (count);
 }
 
+#include "main.h"
+
 /**
  * print_pointer - Prints a pointer to the console.
  * @args: The argument list containing the pointer to print.
@@ -113,8 +115,10 @@ int print_pointer(va_list args)
 
 	if (point == NULL)
 	{
-		return (printf("(nil)"));
+		_printf("(nil)");
+		return(5);
 	}
 
-	return (printf("%p", point));
+	_printf("%p", point);
+	return(0);
 }

@@ -7,8 +7,8 @@
 #include <unistd.h>
 #include <limits.h>
 
-int process_format_specifier(const char **format, va_list args);
-int process_pointer(va_list args);
+int print_hex_ptr(void *ptr);
+int print_null_ptr(void);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_percent(va_list args);

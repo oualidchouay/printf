@@ -58,7 +58,7 @@ int print_excl_string(va_list args)
 
 /**
  * printf_ch - prints a character
- * @int: argument
+ * @args: argument
  * Return: number of characters printed (1 in this case)
  */
 int printf_ch(va_list args)

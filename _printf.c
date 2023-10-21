@@ -5,8 +5,6 @@
 #include <limits.h>
 #include "main.h"
 
-int process_format_specifier(const char **format, va_list args);
-
 int _printf(const char *format, ...)
 {
     int count = 0;
@@ -18,7 +16,76 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
             format++;
-            count += process_format_specifier(&format, args);
+            if (*format == 'c')
+            {
+                int ch = va_arg(args, int);
+                _putchar(ch);
+                count++;
+            }
+            else if (*format == 's')
+            {
+                char *str = va_arg(args, char *);
+                while (*str)
+                {
+                    _putchar(*str);
+                    str++;
+                    count++;
+                }
+            }
+            else if (*format == 'd' || *format == 'i')
+            {
+                count += print_dec(args);
+            }
+            else if (*format == 'u')
+            {
+                count += print_unsigned_int(args);
+            }
+            else if (*format == 'o')
+            {
+                count += print_oct(args);
+            }
+            else if (*format == 'x')
+            {
+                count += print_hex(args);
+            }
+            else if (*format == 'X')
+            {
+                count += print_HEX(args);
+            }
+            else if (*format == 'p')
+            {
+                void *ptr = va_arg(args, void *);
+                if (ptr)
+                {
+                    _putchar('0');
+                    _putchar('x');
+                    count += 2;
+                    count += print_hex_ptr(ptr);
+                }
+                else
+                {
+                    count += print_null_ptr();
+                }
+            }
+            else if (*format == 'R')
+            {
+                count += print_rev(args);
+            }
+            else if (*format == 'S')
+            {
+                count += print_excl_string(args);
+            }
+            else if (*format == '%')
+            {
+                _putchar('%');
+                count++;
+            }
+            else if (*format == 'r')
+            {
+                _putchar('%');
+                _putchar('r');
+                count += 2;
+            }
         }
         else
         {
@@ -31,49 +98,51 @@ int _printf(const char *format, ...)
 
     va_end(args);
     return count;
-}
-
-int process_format_specifier(const char **format, va_list args)
+}                                                                                                                                                                                                           int print_hex_ptr(void *ptr)
 {
+    char buffer[20];
     int count = 0;
 
-    switch (**format)
+    if (ptr == NULL)
     {
-        case 'c':
-            count = printf_ch(va_arg(args, int));
-            break;
-        case 's':
-            count = printf_string(va_arg(args, char *));
-            break;
-        case 'd':
-        case 'i':
-            count = print_dec(args);
-            break;
-        case 'u':
-            count = print_unsigned_int(args);
-            break;
-        case 'o':
-            count = print_oct(args);
-            break;
-        case 'x':
-            count = print_hex(args);
-            break;
-        case 'X':
-            count = print_HEX(args);
-            break;
-        case 'p':
-            count = print_pointer(va_arg(args, void *));
-            break;
-        case 'r':
-            _putchar('%');
-            _putchar('r');
-            count += 2;
-            break;
-        default:
-            _putchar('%');
-            _putchar(**format);
-            count += 2;
+        buffer[0] = '0';
+        buffer[1] = 'x';
+        buffer[2] = '0';
+        count += 3;
+    }
+    else
+    {
+        unsigned long n = (unsigned long)ptr;
+        int i = 0;
+        
+        while (n > 0)
+        {
+            int remainder = n % 16;
+            buffer[i++] = (remainder < 10) ? remainder + '0' : remainder + 'a' - 10;
+            n /= 16;
+        }
+
+        count += i;
+
+        while (i > 0)
+        {
+            _putchar(buffer[--i]);
+        }
     }
 
     return count;
+}
+
+int print_null_ptr()
+{
+    char *null_str = "(nil)";
+    int i = 0;
+    
+    while (null_str[i])
+    {
+        _putchar(null_str[i]);
+        i++;
+    }
+
+    return i;
 }
