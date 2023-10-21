@@ -111,14 +111,18 @@ int print_oct(va_list args)
  */
 int print_pointer(va_list args)
 {
+	int count;
 	void *point = va_arg(args, void *);
 
 	if (point == NULL)
 	{
-		_printf("(nil)");
-		return (5);
+		return (print_null_ptr());
 	}
+	_putchar('0');
+	_putchar('x');
+	count = 2;
+	count += print_hex_ptr(point);
 
-	_printf("%p", point);
-	return (0);
+	return (count);
 }
+

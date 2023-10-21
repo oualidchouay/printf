@@ -25,5 +25,6 @@ int print_HEX(va_list args);
 int print_pointer(va_list args);
 int print_rev(va_list args);
 int print_r13(va_list args);
+int handle_format_specifier(const char **format, va_list args);
 
 #endif

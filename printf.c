@@ -5,10 +5,11 @@
 #include <limits.h>
 #include "main.h"
 
+
 /**
- * _printf - Function to print a formatted string to the standard output
- * @format: Format specifier string
- * Return: count
+ * _printf - Custom printf function.
+ * @format: Format specifier string.
+ * Return: The number of characters printed.
  */
 int _printf(const char *format, ...)
 {
@@ -22,79 +23,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
-			{
-				int ch = va_arg(args, int);
-
-				_putchar(ch);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-
-				while (*str)
-				{
-					_putchar(*str);
-					str++;
-					count++;
-				}
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				count += print_dec(args);
-			}
-			else if (*format == 'u')
-			{
-				count += print_unsigned_int(args);
-			}
-			else if (*format == 'o')
-			{
-				count += print_oct(args);
-			}
-			else if (*format == 'x')
-			{
-				count += print_hex(args);
-			}
-			else if (*format == 'X')
-			{
-				count += print_HEX(args);
-			}
-			else if (*format == 'p')
-			{
-				void *ptr = va_arg(args, void *);
-
-				if (ptr)
-				{
-					_putchar('0');
-					_putchar('x');
-					count += 2;
-					count += print_hex_ptr(ptr);
-				}
-				else
-				{
-					count += print_null_ptr();
-				}
-			}
-			else if (*format == 'R')
-			{
-				count += print_rev(args);
-			}
-			else if (*format == 'S')
-			{
-				count += print_excl_string(args);
-			}
-			else if (*format == '%')
-			{
-				_putchar('%');
-				count++;
-			}
-			else if (*format == 'r')
-			{
-				_putchar('%');
-				_putchar('r');
-				count += 2;
-			}
+			count += handle_format_specifier(&format, args);
 		}
 		else
 		{
@@ -108,6 +37,55 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
+/**
+ * handle_format_specifier - Handle format specifiers.
+ * @format: Pointer to the format specifier.
+ * @args: Variable arguments list.
+ * Return: The number of characters printed for the specifier.
+ */
+int handle_format_specifier(const char **format, va_list args)
+{
+	int count = 0;
+
+	if (**format == '\0')
+		return (-1);
+
+	if (**format == 'c')
+		count += printf_ch(args);
+	else if (**format == 's')
+		count += printf_string(args);
+	else if (**format == 'd' || **format == 'i')
+		count += print_int(args);
+	else if (**format == 'u')
+		count += print_unsigned_int(args);
+	else if (**format == 'o')
+		count += print_oct(args);
+	else if (**format == 'x')
+		count += print_hex(args);
+	else if (**format == 'X')
+		count += print_HEX(args);
+	else if (**format == 'p')
+		count += print_pointer(args);
+	else if (**format == 'R')
+		count += print_rev(args);
+	else if (**format == 'S')
+		count += print_excl_string(args);
+	else if (**format == '%')
+	{
+		_putchar('%');
+		count++;
+	}
+	else if (**format == 'r')
+	{
+		_putchar('%');
+		_putchar('r');
+		count += 2;
+	}
+
+	return (count);
+}
+
 /**
  * print_hex_ptr - Prints the hexadecimal representation of a pointer
  * @ptr: The pointer to be printed in hexadecimal
