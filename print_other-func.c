@@ -20,35 +20,31 @@ int print_percent(va_list args)
  * Return: integer
  */
 
-int print_bin(va_list args)
+int print_binary(va_list args)
 {
-	unsigned int n = va_arg(args, unsigned int);
 	int count = 0;
-	int flag = 0;
-	unsigned int m;
+	unsigned int n = va_arg(args, unsigned int);
+	char buffer[32];
+	int index = 0;
+	int i;
 
 	if (n == 0)
 	{
-		_putchar('0');
-		return (1);
+		putchar('0');
+		return 1;
 	}
 
-	m = 1 << (sizeof(unsigned int) * CHAR_BIT - 1);
-
-	while (m > 0)
+	while (n)
 	{
-		if ((n & m) != 0)
-			flag = 1;
-
-		if (flag)
-		{
-			_putchar((n & m) ? '1' : '0');
-			count++;
-		}
-
-		m >>= 1;
+		buffer[index++] = '0' + (n % 2);
+		n /= 2;
 	}
 
+	for (i = index - 1; i >= 0; i--)
+	{
+		putchar(buffer[i]);
+		count++;
+	}
 	return (count);
 }
 /**
