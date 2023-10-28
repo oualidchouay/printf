@@ -10,7 +10,8 @@ int printf_string(va_list args)
 	char *str = va_arg(args, char *);
 	int p = 0;
 	int i = 0;
-
+	int j = 0;
+	char null_str[] = "(null)";
 	if (str)
 	{
 		while (str[i])
@@ -18,6 +19,15 @@ int printf_string(va_list args)
 			_putchar(str[i]);
 			p++;
 			i++;
+		}
+	}
+	else
+	{
+		while (null_str[j])
+		{
+			_putchar(null_str[j]);
+			p++;
+			j++;
 		}
 	}
 	return (p);

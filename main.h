@@ -28,5 +28,6 @@ int print_r13(va_list args);
 int handle_format_specifier(const char **format, va_list args);
 int is_valid_format_specifier(char c);
 int print_number(int n);
+int print_binary(va_list args);
 
 #endif

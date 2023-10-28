@@ -55,7 +55,6 @@ int print_int(va_list args)
 	count += print_number(n);
 	return (count);
 }
-
 /**
  * print_dec - prints decimal
  * @args: argument to print

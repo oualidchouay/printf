@@ -13,7 +13,7 @@
  */
 int is_valid_format_specifier(char c)
 {
-	const char *valid_specifiers = "cdisuoxXpRS%";
+	const char *valid_specifiers = "cdisuoxXpbrRS%";
 
 	while (*valid_specifiers)
 	{
@@ -98,6 +98,8 @@ int handle_format_specifier(const char **format, va_list args)
 			return (print_HEX(args));
 		if (spec == 'p')
 			return (print_pointer(args));
+		if (spec == 'b')
+			return (print_binary(args));
 		if (spec == 'R')
 			return (print_r13(args));
 		if (spec == 'S')
