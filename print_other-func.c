@@ -104,7 +104,6 @@ int print_rev(va_list args)
 	{
 		s = "(null)";
 	}
-
 	while (s[len] != '\0')
 	{
 		len++;

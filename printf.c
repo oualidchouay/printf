@@ -99,7 +99,7 @@ int handle_format_specifier(const char **format, va_list args)
 		if (spec == 'p')
 			return (print_pointer(args));
 		if (spec == 'R')
-			return (print_rev(args));
+			return (print_r13(args));
 		if (spec == 'S')
 			return (print_excl_string(args));
 		if (spec == '%')
