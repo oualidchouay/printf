@@ -22,7 +22,6 @@ int printf_string(va_list args)
 	}
 	return (p);
 }
-
 /**
  * print_excl_string - prints exclusive string
  * @args: argument
@@ -31,7 +30,7 @@ int printf_string(va_list args)
 
 int print_excl_string(va_list args)
 {
-	int i, len = 0;
+	int i, count = 0;
 	char *string = va_arg(args, char *);
 
 	if (string == NULL)
@@ -44,16 +43,16 @@ int print_excl_string(va_list args)
 	{
 		if (string[i] < 32 || string[i] >= 127)
 		{
-			len += _printf("\\x%02x", (unsigned char)string[i]);
+			count += _printf("\\x%02x", (unsigned char)string[i]);
 		}
 		else
 		{
 			_putchar(string[i]);
-			len++;
+			count++;
 		}
 		i++;
 	}
-	return (len);
+	return (count);
 }
 
 /**

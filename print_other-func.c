@@ -14,6 +14,7 @@ int print_percent(va_list args)
 	_putchar('%');
 	return (1);
 }
+
 /**
  * print_bin - converts to binary
  * @args: argument
@@ -30,23 +31,26 @@ int print_bin(va_list args)
 
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return (1);
 	}
-
 	while (n)
 	{
 		buffer[index++] = '0' + (n % 2);
 		n /= 2;
 	}
-
-	for (i = index - 1; i >= 0; i--)
+	while (index < 32)
 	{
-		putchar(buffer[i]);
+		buffer[index++] = '0';
+	}
+	for (i = 31; i >= 0; i--)
+	{
+		_putchar(buffer[i]);
 		count++;
 	}
 	return (count);
 }
+
 /**
  * print_r13 - converts a string to ROT13
  * @args: the argument list containing the string to convert

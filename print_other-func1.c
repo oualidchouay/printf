@@ -98,10 +98,8 @@ int print_oct(va_list args)
 		count++;
 	}
 
-	return (count);
+	return (count + 1);
 }
-
-#include "main.h"
 
 /**
  * print_pointer - Prints a pointer to the console.

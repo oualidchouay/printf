@@ -1,41 +1,61 @@
 #include "main.h"
 
 /**
- * print_int - prints integer
- * @args: argument to print
- * Return: number of characters printed
-*/
-int print_int(va_list args)
+ * print_number - Print an integer number.
+ * @n: The integer to print.
+ * Return: The number of characters printed.
+ */
+int print_number(int n)
 {
-	int n = va_arg(args, int);
-	char buffer[10];
-	int i = 0;
 	int count = 0;
 
 	if (n < 0)
 	{
-		n *= -1;
 		_putchar('-');
 		count++;
+		n = -n;
 	}
+
+	if (n / 10)
+		count += print_number(n / 10);
+
+	_putchar((n % 10) + '0');
+	return (count + 1);
+}
+
+/**
+ * print_int - Print an integer.
+ * @args: The va_list that contains the integer to print.
+ * Return: The number of characters printed.
+ */
+int print_int(va_list args)
+{
+	int n = va_arg(args, int);
+	int count = 0;
+
 	if (n == 0)
 	{
 		_putchar('0');
 		return (1);
 	}
-	while (n > 0)
+
+	if (n < 0)
 	{
-		buffer[i++] = n % 10 + '0';
-		n /= 10;
+		_putchar('-');
+		count++;
+		if (n == INT_MIN)
+		{
+			_putchar('2');
+			n %= 1000000000;
+			count++;
+		}
+		n = -n;
 	}
 
-	for (i--; i >= 0; i--)
-	{
-		_putchar(buffer[i]);
-		count++;
-	}
+	count += print_number(n);
 	return (count);
 }
+
 /**
  * print_dec - prints decimal
  * @args: argument to print
@@ -57,6 +77,7 @@ int print_unsigned_int(va_list args)
 	int i = 0;
 	unsigned int n = va_arg(args, unsigned int);
 	char buffer[10];
+	int count = 0;
 
 	while (n > 0)
 	{
@@ -73,6 +94,7 @@ int print_unsigned_int(va_list args)
 	for (i--; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
+		count++;
 	}
-	return (i + 1);
+	return (count);
 }
