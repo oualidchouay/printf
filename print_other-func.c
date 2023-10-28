@@ -25,7 +25,7 @@ int print_bin(va_list args)
 {
 	int count = 0;
 	unsigned int n = va_arg(args, unsigned int);
-	char buffer[33];
+	char buffer[32];
 	int index = 0;
 	int i;
 
@@ -39,7 +39,7 @@ int print_bin(va_list args)
 		buffer[index++] = '0' + (n % 2);
 		n /= 2;
 	}
-	while (index == 0)
+	while (index < 9)
 	{
 		buffer[index++] = '0';
 	}
