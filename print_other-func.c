@@ -25,7 +25,7 @@ int print_bin(va_list args)
 {
 	int count = 0;
 	unsigned int n = va_arg(args, unsigned int);
-	char buffer[32];
+	char buffer[33];
 	int index = 0;
 	int i;
 
@@ -39,7 +39,7 @@ int print_bin(va_list args)
 		buffer[index++] = '0' + (n % 2);
 		n /= 2;
 	}
-	while (index < 9)
+	while (index == 0)
 	{
 		buffer[index++] = '0';
 	}
@@ -115,37 +115,4 @@ int print_rev(va_list args)
 	}
 
 	return (len);
-}
-/**
- * print_binary - Prints the binary representation of an unsigned integer
- * @args: argument
- *
- * Return: integer
- */
-int print_binary(va_list args)
-{
-	unsigned int n = va_arg(args, unsigned int);
-	int count = 0;
-	int bit;
-	int printing = 0;
-	
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
-
-	for (bit = sizeof(unsigned int) * 8 - 1; bit >= 0; bit--)
-	{
-		if (n & (1u << bit))
-		{
-			_putchar('1');
-			printing = 1;
-		}
-		else if (printing)
-		{
-			_putchar('0');
-		}
-	}
-	return (count);
 }
