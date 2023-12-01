@@ -98,7 +98,7 @@ int print_oct(va_list args)
 		count++;
 	}
 
-	return (count + 1);
+	return (count);
 }
 
 /**

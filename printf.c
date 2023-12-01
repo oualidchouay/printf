@@ -105,9 +105,7 @@ int handle_format_specifier(const char **format, va_list args)
 		if (spec == 'S')
 			return (print_excl_string(args));
 		if (spec == '%')
-		{
 			_putchar('%');
-		}
 		if (spec == 'r')
 		{
 			_putchar('%');

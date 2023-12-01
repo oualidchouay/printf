@@ -28,6 +28,7 @@ int print_number(int n)
  * @args: The va_list that contains the integer to print.
  * Return: The number of characters printed.
  */
+
 int print_int(va_list args)
 {
 	int n = va_arg(args, int);
@@ -55,6 +56,7 @@ int print_int(va_list args)
 	count += print_number(n);
 	return (count);
 }
+
 /**
  * print_dec - prints decimal
  * @args: argument to print

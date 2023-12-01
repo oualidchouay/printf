@@ -12,6 +12,7 @@ int printf_string(va_list args)
 	int i = 0;
 	int j = 0;
 	char null_str[] = "(null)";
+
 	if (str)
 	{
 		while (str[i])
@@ -32,16 +33,17 @@ int printf_string(va_list args)
 	}
 	return (p);
 }
+
 /**
  * print_excl_string - prints exclusive string
  * @args: argument
  * Return: len
-*/
-
+ */
 int print_excl_string(va_list args)
 {
 	int i, count = 0;
 	char *string = va_arg(args, char *);
+	char buffer[5];
 
 	if (string == NULL)
 	{
@@ -53,7 +55,9 @@ int print_excl_string(va_list args)
 	{
 		if (string[i] < 32 || string[i] >= 127)
 		{
-			count += _printf("\\x%02x", (unsigned char)string[i]);
+			sprintf(buffer, "\\x%02X", (unsigned char)string[i]);
+			_printf("%s", buffer);
+			count += 4;
 		}
 		else
 		{
